@@ -453,7 +453,17 @@ Vamos trabalhar com dois terminais abertos (**T1** e **T2**).
     
 16. Customização de imagens via **Dockerfile**. Este é o metodo recomendado para customizar imagens, pois é mais reproduzível que `docker commit`.
 
-    a. Criar o arquivo `Dockerfile` com o seguinte conteúdo:
+    a. Criar o arquivo `Dockerfile` com o seguinte comando:
+    ```
+    $ touch Dockerfile
+    ```
+    
+    b. Abrir o arquivo `Dockerfile` para editar:
+    ```
+    $ cat >Dockerfile
+    ```
+    
+    c. Adicionar o seguinte conteúdo:
     ```
     FROM ubuntu
     
@@ -463,7 +473,9 @@ Vamos trabalhar com dois terminais abertos (**T1** e **T2**).
     RUN apt-get install -y nmap
     ```
     
-    b. "Compilar" o `Dockerfile`:
+    d. Apertar `CTRL + Z` para salvar.
+    
+    e. "Compilar" o `Dockerfile`:
     ```
     $ docker build -t ubuntu-com-nmap-viadockerfile .
     Sending build context to Docker daemon  15.87kB
@@ -568,7 +580,7 @@ Vamos trabalhar com dois terminais abertos (**T1** e **T2**).
     Successfully tagged ubuntu-com-nmap-viadockerfile:latest
     ```
     
-    c. Conferir que a nova imagem foi criada (e tem o mesmo tamanho que a imagem criada via `docker commit`):
+    f. Conferir que a nova imagem foi criada (e tem o mesmo tamanho que a imagem criada via `docker commit`):
     ```
     $ docker images
     REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
@@ -577,7 +589,7 @@ Vamos trabalhar com dois terminais abertos (**T1** e **T2**).
     ubuntu                          latest              adafef2e596e        11 days ago         73.9MB
     ```
     
-    d. Testar a nova imagem:
+    g. Testar a nova imagem:
     ```
     $ docker run ubuntu-com-nmap-viadockerfile nmap --version
     Nmap version 7.80 ( https://nmap.org )
